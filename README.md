@@ -69,4 +69,7 @@ In order to start the server, a **config.cfg** file must be filled with importan
   
 The **config.cfg** gile must be placed in the same folder with the **AppServer.jar**  
 
+# Download
+You can download both server and client [here](https://github.com/sanluany/AppServer/releases)  
+<br>
 This project is written for education purposes. 
