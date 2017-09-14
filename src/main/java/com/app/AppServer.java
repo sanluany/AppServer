@@ -218,7 +218,7 @@ public class AppServer {
             try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                  BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));) {
                 String inputLine;
-                System.out.println("[INFO] Connections established with " + uuid);
+                System.out.println("[INFO] Connection established with " + uuid);
                 out.println(getPrivilegeValue() + "-" + "80" + "-" + "Connection established!");
                 while ((inputLine = in.readLine()) != null) {
                     String[] userData = inputLine.split("-");
