@@ -86,7 +86,8 @@ public class AppServer {
                     if ((privilege.equals(Privilege.GUEST)) & (!userIsLoggedIn(request[1]))) {
                         String[] respond = (dataBase.selectRecordFromDB(2, request)).split("-");
                         if (respond[0].equals("80")) {
-                            answer = "82-Welcome " + request[2] + "!";
+                            answer = "82-Welcome " + request[1] + "!";
+                            System.out.println("[INFO] User "+request[1]+" has just logged in");
                             if (respond[1].equals("ADMIN"))
                                 privilege = Privilege.ADMIN;
                             else if (respond[1].equals("USER"))
@@ -266,7 +267,7 @@ public class AppServer {
         }
 
     public static void main(String[] args) {
-        System.out.println("[INFO] Starting server..");
+        System.out.println("\n[INFO] Starting server..");
         loadConfig();
         dataBase = new DataBase(configValues);
         dataBase.connectToDB();
@@ -291,10 +292,11 @@ public class AppServer {
                 if (APP_SERVER_THREADS[i] == null) {
                     UUID uuid = UUID.randomUUID();
                     (APP_SERVER_THREADS[i] = new AppServerThread(uuid, clientSocket)).start();
-                    System.out.println("[INFO] New client registered!!" + "UUID=" + uuid.toString());
+                    System.out.println("[INFO] New client registered " + "UUID=" + uuid.toString());
                     break;
                 } else {
                     if (!APP_SERVER_THREADS[i].isAlive()) {
+                        System.out.println("[INFO] User "+APP_SERVER_THREADS[i].username+" has logged out");
                         APP_SERVER_THREADS[i] = null;
                     }
                 }
@@ -405,8 +407,6 @@ public class AppServer {
             }
             if (type == 2) {
                 String pass = hashPassword(data[2]);
-                System.out.println("Length=" + pass.length());
-                System.out.println("pass=" + pass);
                 data[1] = data[1].toLowerCase();
                 query = "INSERT INTO AUTH(Username, Password, Privilege, CreationDate) VALUES ('" + data[1] + "','" + pass + "','" + "USER" + "','" + formatDateTime + "');";
             }
