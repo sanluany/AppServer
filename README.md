@@ -67,7 +67,7 @@ In order to start the server, a **config.cfg** file must be filled with importan
 6. **username** - Username that is used to access the database
 7. **password** - Password that is used to access the database  
   
-The **config.cfg** gile must be placed in the same folder with the **AppServer.jar**  
+The **config.cfg** file must be placed in the same folder with the **AppServer.jar**  
 
 # Download
 You can download both server and client [here](https://github.com/sanluany/AppServer/releases)  
