@@ -11,7 +11,7 @@ This project consists of server and client. The server is responsible for:
 
 The client sends request to the server and wait for an answer.
 
-MS SQL Server is used for manage a database, where user's and service information is stored. There are 2 tables:  
+MS SQL Server is used for manage a database, where users' and service information is stored. There are 2 tables:  
 > Auth table is used for registration and authentication;  
 > ```SQL
 > CREATE TABLE Auth (   
@@ -56,6 +56,10 @@ The action that user is allowed to perform depends on level of privilege. There 
 >
 >![admin](https://user-images.githubusercontent.com/31934687/30434136-1dd6da1c-996f-11e7-935f-9b82f8d45a4e.gif)
 
+# Libraries
+[jBCrypt](http://www.mindrot.org/projects/jBCrypt/) - used for hashing users' passwords and for password validation.  
+[Microsoft JDBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) - used for establishing a connection to database.
+
 # Configuration of the server
 
 In order to start the server, a **config.cfg** file must be filled with important data:
@@ -68,6 +72,7 @@ In order to start the server, a **config.cfg** file must be filled with importan
 7. **password** - Password that is used to access the database  
   
 The **config.cfg** file must be placed in the same folder with the **AppServer.jar**  
+
 
 # Download
 You can download both server and client [here](https://github.com/sanluany/AppServer/releases)  
